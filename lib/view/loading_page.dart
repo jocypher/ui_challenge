@@ -8,6 +8,18 @@ class LoadingScreen extends StatefulWidget {
 }
 
 class _LoadingScreenState extends State<LoadingScreen> {
+
+  @override
+  void initState() {
+    super.initState();
+    load();
+  }
+
+  void load() async{
+    await Future.delayed(Duration(seconds: 3), (){
+      Navigator.pushNamed(context, '/onboardingScreen');
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Container(

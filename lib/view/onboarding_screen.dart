@@ -11,6 +11,7 @@ class OnboardingScreen extends StatefulWidget {
 
 class _OnboardingScreenState extends State<OnboardingScreen> {
   final PageController pageController = PageController();
+  bool isLastPage = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,9 +23,13 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             Align(
               alignment: Alignment.centerRight,
               child: GestureDetector(
-                onTap: () => pageController.animateToPage(2,
-                    duration: const Duration(milliseconds: 500),
-                    curve: Curves.easeIn),
+                onTap: () {
+                  isLastPage
+                      ? Navigator.pushNamed(context, "/homescreen")
+                      : pageController.animateToPage(3,
+                          duration: const Duration(milliseconds: 700),
+                          curve: Curves.easeIn);
+                },
                 child: Text(
                   "Skip",
                   style: TextStyle(
@@ -37,8 +42,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             SizedBox(
               height: 480,
               child: PageView(
+                onPageChanged: (value) {
+                  setState(() {
+                    isLastPage = value == 2;
+                  });
+                },
                 controller: pageController,
-                onPageChanged: (value) {},
                 children: [
                   ColorFiltered(
                       colorFilter: const ColorFilter.mode(
@@ -51,7 +60,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   ColorFiltered(
                       colorFilter: const ColorFilter.mode(
                           primaryBackgroundColor, BlendMode.darken),
-                      child: Image.asset("assets/faux_watermelon.avif"))
+                      child: Image.asset("assets/faux_watermelon.avif")),
                 ],
               ),
             ),
@@ -101,11 +110,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   color: mainWidgetColor,
                   borderRadius: BorderRadius.circular(100)),
               child: IconButton(
-                  onPressed: () async{
-                    pageController.nextPage(
-                        duration: const Duration(milliseconds: 500),
-                        curve: Curves.easeIn);
-                    await Navigator.pushNamed(context, "/homescreen");
+                  onPressed: () {
+                    isLastPage
+                        ? Navigator.pushNamed(context, "/homescreen")
+                        : pageController.nextPage(
+                            duration: const Duration(milliseconds: 500),
+                            curve: Curves.easeIn);
                   },
                   icon: const Icon(
                     Icons.arrow_forward,

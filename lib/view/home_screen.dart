@@ -11,11 +11,13 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: primaryBackgroundColor.withOpacity(0.99),
       body: Padding(
-        padding: const EdgeInsets.fromLTRB(20, 60, 20, 0),
+        padding: const EdgeInsets.fromLTRB(20, 60, 30, 0),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -38,7 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 Expanded(
                     child: Container(
-                  margin: const EdgeInsets.only(right: 13, left: 10),
+                  margin: const EdgeInsets.only(right: 10, left: 10),
                   height: 57,
                   decoration: BoxDecoration(
                       color: Colors.grey.shade200,
@@ -49,13 +51,13 @@ class _HomeScreenState extends State<HomeScreen> {
                             spreadRadius: 1)
                       ],
                       borderRadius: BorderRadius.circular(10)),
-                  child: Center(
+                  child: const Center(
                     child: TextField(
                       decoration: InputDecoration(
-                          prefixIconColor: mainWidgetColor.withOpacity(0.3),
+                          prefixIconColor: mainWidgetColor,
                           border: InputBorder.none,
                           hintText: "Plants",
-                          prefixIcon: const Icon(Icons.search)),
+                          prefixIcon: Icon(Icons.search)),
                     ),
                   ),
                 )),
@@ -76,6 +78,14 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 )
               ],
+            ),
+            SizedBox(height: size.height * 0.05),
+            const Padding(
+              padding: EdgeInsets.only(left: 10.0),
+              child: Text(
+                "Found\n10 Results",
+                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+              ),
             )
           ],
         ),

@@ -1,7 +1,7 @@
 class Plant{
   final String name;
   final String plantImage;
-  final int price;
+  final double price;
 
   Plant({required this.name, required this.plantImage, required this.price});
   

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ui_challenge/global_variables/colors.dart';
+import 'package:ui_challenge/model/plant_model.dart';
+import 'package:ui_challenge/widgets/home_widgets.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -9,6 +11,12 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  List<Plant> plants = [
+    Plant(name: "Lucky Jade Plant", plantImage: "assets/faux_watermelon.avif", price: 12.99),
+    Plant(name: "Snake Plants", plantImage: "assets/plant_terrocotta.avif", price: 12.99),
+    Plant(name: "Peperomia Plant", plantImage: "assets/isom_plant.avif", price: 12.99),
+    Plant(name: "Small Plant", plantImage: "assets/pepper_face_plant.avif", price: 12.99)
+  ];
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -79,14 +87,16 @@ class _HomeScreenState extends State<HomeScreen> {
                 )
               ],
             ),
-            SizedBox(height: size.height * 0.05),
+            SizedBox(height: size.height * 0.03),
             const Padding(
               padding: EdgeInsets.only(left: 10.0),
               child: Text(
                 "Found\n10 Results",
                 style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
               ),
-            )
+            
+            ),
+            HomeWidget(plants: plants)
           ],
         ),
       ),

@@ -7,7 +7,7 @@ class Plant{
 
   Plant({required this.name, required this.plantImage, required this.price});
 
-  void navigateTODetailsScreen(BuildContext context){
+   void navigateT0DetailsScreen(BuildContext context){
     Navigator.pushNamed(context, "/detailsScreen", arguments: this);
   }
   

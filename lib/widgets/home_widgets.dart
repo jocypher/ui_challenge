@@ -22,43 +22,48 @@ class _HomeWidgetState extends State<HomeWidget> {
         crossAxisSpacing: 8,
         itemBuilder: (context, index) {
           final plants = widget.plants[index];
-          return Container(
-            height: 270,
-            width: 150,
-            decoration: BoxDecoration(
-                color: secondaryBackgroundColor,
-                borderRadius: BorderRadius.circular(10)),
-            padding: const EdgeInsets.all(10),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                ColorFiltered(
-                    colorFilter: const ColorFilter.mode(
-                        primaryBackgroundColor, BlendMode.darken),
-                    child: Image.asset(
-                      plants.plantImage,
-                      alignment: Alignment.center,
-                      fit: BoxFit.contain,
-                    )),
-                Text(plants.name),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text("\$${plants.price}"),
-                    Container(
-                      height: 33,
-                      width: 33,
-                      decoration: BoxDecoration(
-                          color: Colors.black,
-                          borderRadius: BorderRadius.circular(100)),
-                      child: const Icon(
-                        Icons.favorite,
-                        color: Colors.white,
-                      ),
-                    )
-                  ],
-                )
-              ],
+          return GestureDetector(
+            onTap: () {
+              plants.navigateT0DetailsScreen(context);
+            },
+            child: Container(
+              height: 270,
+              width: 150,
+              decoration: BoxDecoration(
+                  color: secondaryBackgroundColor,
+                  borderRadius: BorderRadius.circular(10)),
+              padding: const EdgeInsets.all(10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  ColorFiltered(
+                      colorFilter: const ColorFilter.mode(
+                          primaryBackgroundColor, BlendMode.darken),
+                      child: Image.asset(
+                        plants.plantImage,
+                        alignment: Alignment.center,
+                        fit: BoxFit.contain,
+                      )),
+                  Text(plants.name),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text("\$${plants.price}"),
+                      Container(
+                        height: 33,
+                        width: 33,
+                        decoration: BoxDecoration(
+                            color: Colors.black,
+                            borderRadius: BorderRadius.circular(100)),
+                        child: const Icon(
+                          Icons.favorite,
+                          color: Colors.white,
+                        ),
+                      )
+                    ],
+                  )
+                ],
+              ),
             ),
           );
         });

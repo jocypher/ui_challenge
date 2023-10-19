@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:ui_challenge/global_variables/colors.dart';
 import 'package:ui_challenge/model/plant_model.dart';
 
 class HomeWidget extends StatefulWidget {
@@ -22,25 +23,33 @@ class _HomeWidgetState extends State<HomeWidget> {
         itemBuilder: (context, index) {
           final plants = widget.plants[index];
           return Container(
-            height: 250,
-            decoration: BoxDecoration(color:Colors.blue, 
-            borderRadius: BorderRadius.circular(10)),
+            height: 270,
+            width: 150,
+            decoration: BoxDecoration(
+                color: secondaryBackgroundColor,
+                borderRadius: BorderRadius.circular(10)),
             padding: const EdgeInsets.all(10),
             child: Column(
-              // mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 ColorFiltered(
                     colorFilter: const ColorFilter.mode(
-                        Colors.transparent, BlendMode.darken),
-                    child: Image.asset(plants.plantImage)),
+                        primaryBackgroundColor, BlendMode.darken),
+                    child: Image.asset(
+                      plants.plantImage,
+                      alignment: Alignment.center,
+                      fit: BoxFit.contain,
+                    )),
                 Text(plants.name),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text("\$${plants.price}"),
                     Container(
+                      height: 33,
+                      width: 33,
                       decoration: BoxDecoration(
+                          color: Colors.black,
                           borderRadius: BorderRadius.circular(100)),
                       child: const Icon(
                         Icons.favorite,
@@ -55,4 +64,3 @@ class _HomeWidgetState extends State<HomeWidget> {
         });
   }
 }
-

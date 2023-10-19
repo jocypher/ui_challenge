@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:ui_challenge/global_variables/colors.dart';
+
 import 'package:ui_challenge/model/plant_model.dart';
 
 class HomeWidget extends StatefulWidget {
@@ -15,11 +15,12 @@ class _HomeWidgetState extends State<HomeWidget> {
   @override
   Widget build(BuildContext context) {
     return MasonryGridView.count(
+        physics: const AlwaysScrollableScrollPhysics(),
         itemCount: widget.plants.length,
         shrinkWrap: true,
         crossAxisCount: 2,
-        mainAxisSpacing: 8,
-        crossAxisSpacing: 8,
+        mainAxisSpacing: 30,
+        crossAxisSpacing: 30,
         itemBuilder: (context, index) {
           final plants = widget.plants[index];
           return GestureDetector(
@@ -28,22 +29,21 @@ class _HomeWidgetState extends State<HomeWidget> {
             },
             child: Container(
               height: 270,
-              width: 150,
+              width: 10,
               decoration: BoxDecoration(
-                  color: secondaryBackgroundColor,
-                  borderRadius: BorderRadius.circular(10)),
+                  color: Colors.white60,
+                  borderRadius: BorderRadius.circular(25)),
               padding: const EdgeInsets.all(10),
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  ColorFiltered(
-                      colorFilter: const ColorFilter.mode(
-                          primaryBackgroundColor, BlendMode.darken),
-                      child: Image.asset(
-                        plants.plantImage,
-                        alignment: Alignment.center,
-                        fit: BoxFit.contain,
-                      )),
+                  Image.asset(
+                    plants.plantImage,
+                    color: Colors.transparent,
+                    alignment: Alignment.center,
+                    fit: BoxFit.contain,
+                  ),
                   Text(plants.name),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,

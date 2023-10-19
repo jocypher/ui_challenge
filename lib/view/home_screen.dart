@@ -27,7 +27,23 @@ class _HomeScreenState extends State<HomeScreen> {
     Plant(
         name: "Small Plant",
         plantImage: "assets/pepper_face_plant.avif",
-        price: 12.99)
+        price: 12.99),
+    Plant(
+        name: "Lucky Jade Plant",
+        plantImage: "assets/faux_watermelon.avif",
+        price: 12.99),
+    Plant(
+        name: "Peperomia Plant",
+        plantImage: "assets/isom_plant.avif",
+        price: 12.99),
+    Plant(
+        name: "Small Plant",
+        plantImage: "assets/pepper_face_plant.avif",
+        price: 12.99),
+    Plant(
+        name: "Snake Plants",
+        plantImage: "assets/plant_terrocotta.avif",
+        price: 12.99),
   ];
   @override
   Widget build(BuildContext context) {
@@ -35,6 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       backgroundColor: primaryBackgroundColor,
       body: SingleChildScrollView(
+        physics: const NeverScrollableScrollPhysics(),
         child: Padding(
           padding: const EdgeInsets.fromLTRB(20, 60, 30, 0),
           child: Column(

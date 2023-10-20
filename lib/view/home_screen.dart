@@ -68,7 +68,14 @@ class _HomeScreenState extends State<HomeScreen> {
                     "Search Products",
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.w400),
                   ),
-                  const Icon(Icons.person)
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(30),
+                    child: Image.asset(
+                      "assets/images.png",
+                      height: 60,
+                      width: 60,
+                    ),
+                  )
                 ],
               ),
               const SizedBox(
@@ -92,7 +99,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: const Center(
                       child: TextField(
                         decoration: InputDecoration(
-                            prefixIconColor: mainWidgetColor,
+                            prefixIconColor: Colors.grey,
                             border: InputBorder.none,
                             hintText: "Plants",
                             prefixIcon: Icon(Icons.search)),
@@ -111,8 +118,13 @@ class _HomeScreenState extends State<HomeScreen> {
                         ],
                         color: Colors.grey.shade200,
                         borderRadius: BorderRadius.circular(10)),
-                    child: const Center(
-                      child: Icon(Icons.filter),
+                    child: Center(
+                      child: Image.asset(
+                        "assets/filter.png",
+                        width: 23,
+                        height: 23,
+                        color: Colors.black87,
+                      ),
                     ),
                   )
                 ],

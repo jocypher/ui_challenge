@@ -119,7 +119,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
             Container(
               height: 230,
               width: double.infinity,
-              padding: const EdgeInsets.fromLTRB(20, 30, 20, 20),
+              padding: const EdgeInsets.fromLTRB(20, 30, 20, 10),
               decoration: const BoxDecoration(
                   color: mainWidgetColor,
                   borderRadius: BorderRadius.only(
@@ -129,20 +129,22 @@ class _DetailsScreenState extends State<DetailsScreen> {
                       bottomRight: Radius.circular(20))),
               child: Column(
                 children: [
-                  const Row(
+                  Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Column(
                         children: [
-                          Icon(
-                            Icons.height,
+                          Image.asset(
+                            "assets/height.png",
                             color: Colors.white,
+                            width: 25,
+                            height: 25,
                           ),
-                          Text(
+                          const Text(
                             "Height",
                             style: TextStyle(color: Colors.white, height: 2),
                           ),
-                          Text(
+                          const Text(
                             "30cm - 40cm",
                             style:
                                 TextStyle(color: Colors.white60, fontSize: 12),
@@ -151,15 +153,17 @@ class _DetailsScreenState extends State<DetailsScreen> {
                       ),
                       Column(
                         children: [
-                          Icon(
-                            Icons.sick,
+                          Image.asset(
+                            "assets/thermometer.png",
+                            width: 30,
+                            height: 30,
                             color: Colors.white,
                           ),
-                          Text(
+                          const Text(
                             "Temperature",
                             style: TextStyle(color: Colors.white, height: 2),
                           ),
-                          Text(
+                          const Text(
                             "30c to 40c",
                             style:
                                 TextStyle(color: Colors.white60, fontSize: 12),
@@ -168,15 +172,17 @@ class _DetailsScreenState extends State<DetailsScreen> {
                       ),
                       Column(
                         children: [
-                          Icon(
-                            Icons.rice_bowl,
+                          Image.asset(
+                            "assets/plant.png",
+                            width: 30,
+                            height: 30,
                             color: Colors.white,
                           ),
-                          Text(
+                          const Text(
                             "Pot",
                             style: TextStyle(color: Colors.white, height: 2),
                           ),
-                          Text(
+                          const Text(
                             "ciramic pot",
                             style:
                                 TextStyle(color: Colors.white60, fontSize: 12),

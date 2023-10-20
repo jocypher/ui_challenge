@@ -53,7 +53,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                     ),
                   ),
                   Text(plants.name),
-                  Text(plants.plantDescription!),
+                  
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [

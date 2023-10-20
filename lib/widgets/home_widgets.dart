@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:ui_challenge/global_variables/colors.dart';
 
 import 'package:ui_challenge/model/plant_model.dart';
 
@@ -31,20 +32,28 @@ class _HomeWidgetState extends State<HomeWidget> {
               height: 270,
               width: 10,
               decoration: BoxDecoration(
-                  color: Colors.white60,
+                  boxShadow: const [
+                    BoxShadow(
+                        color: Colors.black45, blurRadius: 9, spreadRadius: 2)
+                  ],
+                  color: primaryBackgroundColor,
                   borderRadius: BorderRadius.circular(25)),
               padding: const EdgeInsets.all(10),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Image.asset(
-                    plants.plantImage,
-                    color: Colors.transparent,
-                    alignment: Alignment.center,
-                    fit: BoxFit.contain,
+                  ColorFiltered(
+                    colorFilter: const ColorFilter.mode(
+                        primaryBackgroundColor, BlendMode.darken),
+                    child: Image.asset(
+                      plants.plantImage,
+                      alignment: Alignment.center,
+                      fit: BoxFit.contain,
+                    ),
                   ),
                   Text(plants.name),
+                  Text(plants.plantDescription!),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [

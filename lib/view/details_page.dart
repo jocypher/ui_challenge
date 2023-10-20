@@ -4,7 +4,8 @@ import 'package:ui_challenge/global_variables/colors.dart';
 import 'package:ui_challenge/model/plant_model.dart';
 
 class DetailsScreen extends StatefulWidget {
-  const DetailsScreen({super.key});
+  final Plant plant;
+  const DetailsScreen({super.key, required this.plant});
 
   @override
   State<DetailsScreen> createState() => _DetailsScreenState();
@@ -19,12 +20,6 @@ class _DetailsScreenState extends State<DetailsScreen> {
     detailsPageController.dispose();
   }
 
-  List<Plant> plantDetails = [
-    Plant(
-        name: "Lucky-jade-plant",
-        plantImage: "assets/faux_watermelon.avif",
-        price: 12.99)
-  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,11 +34,10 @@ class _DetailsScreenState extends State<DetailsScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   GestureDetector(
-                    onTap: () {
-                      
-                      Navigator.popAndPushNamed(context, "/homescreen");
-                    },
-                    child: const Icon(Icons.arrow_back_ios)),
+                      onTap: () {
+                        Navigator.popAndPushNamed(context, "/homescreen");
+                      },
+                      child: const Icon(Icons.arrow_back_ios)),
                   const Icon(Icons.shopping_cart_outlined)
                 ],
               ),
@@ -89,13 +83,13 @@ class _DetailsScreenState extends State<DetailsScreen> {
                 ),
               )
             ]),
-            const Padding(
-              padding: EdgeInsets.only(left: 30.0, right: 30),
+            Padding(
+              padding: const EdgeInsets.only(left: 30.0, right: 30),
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  "Lucky-jade-plant",
-                  style: TextStyle(
+                  widget.plant.name,
+                  style: const TextStyle(
                       letterSpacing: 0.4,
                       fontSize: 22,
                       fontStyle: FontStyle.normal,
@@ -197,18 +191,18 @@ class _DetailsScreenState extends State<DetailsScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      const Column(
+                      Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
+                          const Text(
                             "Total Price",
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,
                                 color: Colors.white70),
                           ),
                           Text(
-                            "\$12.99",
-                            style: TextStyle(
+                            "\$${widget.plant.price}",
+                            style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: Colors.white),
                           )

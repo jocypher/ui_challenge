@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ui_challenge/model/plant_model.dart';
 import 'package:ui_challenge/view/details_page.dart';
 import 'package:ui_challenge/view/home_screen.dart';
 import 'package:ui_challenge/view/loading_page.dart';
@@ -20,7 +21,10 @@ class MyApp extends StatelessWidget {
       "/":(context) => const LoadingScreen(),
       "/onboardingScreen":(context) => const OnboardingScreen(),
       "/homescreen":(context) => const HomeScreen(),
-      "/details":(context) => const DetailsScreen()
+      "/details":(context) {
+        final Plant plant = ModalRoute.of(context)!.settings.arguments as Plant;
+      return DetailsScreen(plant: plant);
+      }
      },
     );
   }

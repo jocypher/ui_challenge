@@ -191,9 +191,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                       )
                     ],
                   ),
-                  const SizedBox(
-                    height: 50,
-                  ),
+                  const SizedBox(height: 30,),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
